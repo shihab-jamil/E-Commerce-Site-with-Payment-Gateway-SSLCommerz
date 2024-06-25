@@ -53,25 +53,82 @@ const Register = () => {
     }
 
     const signUpForm = () => (
-        <form onSubmit={handleSubmit}>
-            <div className="form-group">
-                <label className="text-muted">Name:</label>
-                <input type="text" name="name" className="form-control"
-                    value={name} required onChange={handleChange} />
+        <section className="bg-light py-3 py-md-5">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <div className="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+                        <div className="card border border-light-subtle rounded-3 shadow-sm">
+                            <div className="card-body p-3 p-md-4 p-xl-5">
+                                <h2 className="fs-6 fw-normal text-center text-secondary mb-4">Enter your details to
+                                    register</h2>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="row gy-2 overflow-hidden">
+                                        <div className="col-12">
+                                            <div className="form-floating mb-3">
+                                                <label htmlFor="name" className="form-label">Name</label>
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    name="name"
+                                                    id="name"
+                                                    placeholder="Name"
+                                                    value={name}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col-12">
+                                            <div className="form-floating mb-3">
+                                                <label htmlFor="email" className="form-label">Email</label>
+                                                <input
+                                                    type="email"
+                                                    className="form-control"
+                                                    name="email"
+                                                    id="email"
+                                                    placeholder="name@example.com"
+                                                    value={email}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col-12">
+                                            <div className="form-floating mb-3">
+                                                <label htmlFor="password" className="form-label">Password</label>
+                                                <input
+                                                    type="password"
+                                                    className="form-control"
+                                                    name="password"
+                                                    id="password"
+                                                    placeholder="Password"
+                                                    value={password}
+                                                    onChange={handleChange}
+                                                    required
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col-12">
+                                        <div className="d-grid my-3">
+                                                <button disabled={disabled} className="btn btn-primary btn-lg" type="submit">Sign up
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className="col-12">
+                                            <div className="m-0 d-flex align-items-center text-secondary text-center">
+                                                <span>Already have an account?</span>
+                                                <Link className="nav-link" to="/login">Login</Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="form-group">
-                <label className="text-muted">Email:</label>
-                <input type="email" name="email" className="form-control"
-                    value={email} required onChange={handleChange} />
-            </div>
-            <div className="form-group">
-                <label className="text-muted">Password:</label>
-                <input type="password" name="password" className="form-control"
-                    value={password} required onChange={handleChange} />
-            </div>
-            <button type="submit" className="btn btn-primary" disabled={disabled}>Create Account</button>
-        </form>
-    );
+        </section>
+);
 
     const showSuccess = () => {
         if (success) return (
@@ -83,14 +140,14 @@ const Register = () => {
 
     return (
         <Layout title="Register" className="container col-md-8 offset-md-2">
-            {isAuthenticated() ? <Redirect to="/" /> : ""}
+            {isAuthenticated() ? <Redirect to="/"/> : ""}
             {showSuccess()}
             {showLoading(loading)}
             {showError(error, error)}
             <h3>Register Here,</h3>
-            <hr />
+            <hr/>
             {signUpForm()}
-            <hr />
+            <hr/>
         </Layout>
     );
 }
